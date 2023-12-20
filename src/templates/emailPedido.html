@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido Realizado com Sucesso</title>
+</head>
+
+<body style="margin: 20px; font-family: Arial, sans-serif;">
+
+    <div style="text-align: center; padding: 20px;">
+        <img src="https://cdn.discordapp.com/attachments/993507414177480754/1184128685096321095/logo-status-200.png" alt="Logo Status(200)" style="max-width: 100%; height: auto;">
+    </div>
+
+    <div style="height: 10px; background-color: black;"></div>
+
+    <div>
+        <h2 style="text-align: center; text-transform: uppercase;">Pedido Realizado com Sucesso!</h2>
+        <p>Olá {{cliente.nome}},</p>
+        <p>Seu pedido foi realizado com sucesso em nosso sistema. Abaixo, seguem os detalhes do seu pedido:</p>
+
+        <h2>Detalhes do Pedido:</h2>
+        <div style="background-color: #F5F5F5; padding: 5px;">
+            <p>Número do Pedido: {{pedido.numero}}</p>
+            <p>Data do Pedido: {{pedido.data}}</p>
+        </div>
+
+        <h2>Dados do Cliente:</h2>
+        <div style="background-color: #F5F5F5; padding: 5px;">
+            <p>Nome: {{cliente.nome}}</p>
+            <p>E-mail: {{cliente.email}}</p>
+        </div>
+
+        <h2>Endereço de Entrega</h2>
+        <div style="background-color: #F5F5F5; padding: 5px;">
+            <p>{{cliente.endereco}}</p>
+        </div>
+
+        <h2>Itens do Pedido:</h2>
+        <table style="background-color: #F5F5F5; width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Imagem</th>
+                    <th>Detalhes</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each pedido.itens}}
+                <tr>
+                    <td style="text-align: center; vertical-align: middle;">
+                        <img src="{{this.imagem}}" alt="{{this.item}}" style="width: 155px;" />
+                    </td>
+                    <td style="width: 50%;">
+                        Item: {{this.item}} <br>
+                        Quantidade: {{this.quantidade}} <br>
+                        Valor Unitário: {{this.valorUnitario}} <br>
+                        Subtotal: {{this.subtotal}}
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <h2>Resumo da Compra</h2>
+        <div style="background-color: #F5F5F5; padding: 5px;">
+            <p>Total do Pedido: {{pedido.total}}</p>
+        </div>
+
+        <p style="text-align: center;">Agradecemos pela sua compra!</p>
+    </div>
+
+    <div style="background-color: black; color: white; padding: 10px; text-align: center;">
+        <p>Em caso de dúvidas, entre em contato com a nossa Central de Relacionamento, das 08h às 20h40 de segunda à
+            sabado, exceto domingo e feriados.</p>
+    </div>
+
+</body>
+
+</html>
